@@ -115,3 +115,75 @@ show(myDescriptor)
 # | release name:
 # | ---
 # | seqlenghts:
+
+
+#Ex3
+showClass("BSgenome")
+# Result:
+Class "BSgenome" [package "BSgenome"]
+
+Slots:
+                                                                     
+Name:               pkgname     single_sequences   multiple_sequences
+Class:            character OnDiskNamedSequences        RdaCollection
+                                                                     
+Name:            source_url        user_seqnames   injectSNPs_handler
+Class:            character            character    InjectSNPsHandler
+                                                                     
+Name:           .seqs_cache         .link_counts        nmask_per_seq
+Class:          environment          environment              integer
+                                                                     
+Name:                 masks             organism          common_name
+Class:        RdaCollection            character            character
+                                                                     
+Name:              provider     provider_version         release_date
+Class:            character            character            character
+                                                
+Name:          release_name              seqinfo
+Class:            character              Seqinfo
+
+Extends: "GenomeDescription"
+
+Known Subclasses: "MaskedBSgenome"
+
+# Ex4
+# Investigate the a_genome using show()
+show(a_genome)
+
+# Result:
+Yeast genome:
+# organism: Saccharomyces cerevisiae (Yeast)
+# provider: UCSC
+# provider version: sacCer3
+# release date: April 2011
+# release name: SGD April 2011 sequence
+# 17 sequences:
+#   chrI    chrII   chrIII  chrIV   chrV    chrVI   chrVII  chrVIII chrIX  
+#   chrX    chrXI   chrXII  chrXIII chrXIV  chrXV   chrXVI  chrM           
+# (use 'seqnames()' to see all the sequence names, use the '$' or '[[' operator
+# to access a given sequence)
+
+# Investigate some other accesors
+organism(a_genome)
+# Result:
+"Saccharomyces cerevisiae"
+
+provider(a_genome)
+#Result:
+"UCSC"
+
+seqinfo(a_genome)
+#Result:
+Seqinfo object with 17 sequences (1 circular) from sacCer3 genome:
+  seqnames seqlengths isCircular  genome
+  chrI         230218      FALSE sacCer3
+  chrII        813184      FALSE sacCer3
+  chrIII       316620      FALSE sacCer3
+  chrIV       1531933      FALSE sacCer3
+  chrV         576874      FALSE sacCer3
+  ...             ...        ...     ...
+  chrXIII      924431      FALSE sacCer3
+  chrXIV       784333      FALSE sacCer3
+  chrXV       1091291      FALSE sacCer3
+  chrXVI       948066      FALSE sacCer3
+  chrM          85779       TRUE sacCer3
