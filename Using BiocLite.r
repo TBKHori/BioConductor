@@ -317,3 +317,29 @@ nchar(yeastGenome$chrM)
 
 # Result:
 85779
+
+# Ex 6
+# Load the yeast genome
+library(BSgenome.Scerevisiae.UCSC.sacCer3)
+
+# Assign data to the yeastGenome object
+yeastGenome <- BSgenome.Scerevisiae.UCSC.sacCer3
+
+# Get the first 30 bases of each chromosome
+getSeq(yeastGenome, end = 30)
+
+# Result
+  A DNAStringSet instance of length 17
+     width seq                                              names               
+ [1]    30 CCACACCACACCCACACACCCACACACCAC                   chrI
+ [2]    30 AAATAGCCCTCATGTACGTCTCCTCCAAGC                   chrII
+ [3]    30 CCCACACACCACACCCACACCACACCCACA                   chrIII
+ [4]    30 ACACCACACCCACACCACACCCACACACAC                   chrIV
+ [5]    30 CGTCTCCTCCAAGCCCTGTTGTCTCTTACC                   chrV
+ ...   ... ...
+[13]    30 CCACACACACACCACACCCACACCACACCC                   chrXIII
+[14]    30 CCGGCTTTCTGACCGAAATTAAAAAAAAAA                   chrXIV
+[15]    30 ACACCACACCCACACCACACCCACACCCAC                   chrXV
+[16]    30 AAATAGCCCTCATGTACGTCTCCTCCAAGC                   chrXVI
+[17]    30 TTCATAATTAATTTTTTATATATATATTAT                   chrM
+>
