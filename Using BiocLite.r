@@ -173,7 +173,7 @@ provider(a_genome)
 "UCSC"
 
 seqinfo(a_genome)
-#Result:
+# Result:
 Seqinfo object with 17 sequences (1 circular) from sacCer3 genome:
   seqnames seqlengths isCircular  genome
   chrI         230218      FALSE sacCer3
@@ -187,3 +187,133 @@ Seqinfo object with 17 sequences (1 circular) from sacCer3 genome:
   chrXV       1091291      FALSE sacCer3
   chrXVI       948066      FALSE sacCer3
   chrM          85779       TRUE sacCer3
+
+  # Sample Guide
+  Genome elements
+# Genetic information DNA alphabet
+# A set of chromosomes(highly variable number)
+# Genes(carry heredity instructions)
+#   * coding and non-coding
+# Proteins(responsible for specific functions)
+#   *  DNA-to-RNA(transcription)
+#   *  RNA-to-protein(translation)
+
+BSgenome annotation package
+
+# load the package and store data into yeast
+library(BSgenome.Scerevisiae.UCSC.sacCer3)
+yeast <- BSgenome.Scerevisiae.UCSC.sacCer3
+#intrested in other genomes?
+available.genomes()
+
+Using accessors
+
+# Chromosome number
+length(yeast)
+# Chromosome names
+names(yeast)
+# Sequence lengths
+seqlengths(yeast)
+
+Get sequences
+
+S4 method for BSgenome
+
+# S4 method getSeq() requires a BSgenome object
+getSeq(yeast)
+# Select chrome sequence by name, one or many
+getSeq(yeast, "chrM")
+# Select start, end and or width
+# end = 10, selects first 10 base pairs of each chromosome
+getSeq(yeast, end = 10)
+
+# Ex5 a)
+# Load the yeast genome
+library(BSgenome.Scerevisiae.UCSC.sacCer3)
+
+# Result:
+Loading required package: BSgenome
+Loading required package: BiocGenerics
+Loading required package: parallel
+
+Attaching package: 'BiocGenerics'
+The following objects are masked from 'package:parallel':
+
+    clusterApply, clusterApplyLB, clusterCall, clusterEvalQ,
+    clusterExport, clusterMap, parApply, parCapply, parLapply,
+    parLapplyLB, parRapply, parSapply, parSapplyLB
+The following objects are masked from 'package:stats':
+
+    IQR, mad, sd, var, xtabs
+The following objects are masked from 'package:base':
+
+    Filter, Find, Map, Position, Reduce, anyDuplicated, append,
+    as.data.frame, cbind, colMeans, colSums, colnames, do.call,
+    duplicated, eval, evalq, get, grep, grepl, intersect, is.unsorted,
+    lapply, lengths, mapply, match, mget, order, paste, pmax, pmax.int,
+    pmin, pmin.int, rank, rbind, rowMeans, rowSums, rownames, sapply,
+    setdiff, sort, table, tapply, union, unique, unsplit, which,
+    which.max, which.min
+Loading required package: S4Vectors
+Loading required package: stats4
+
+Attaching package: 'S4Vectors'
+The following object is masked from 'package:base':
+
+    expand.grid
+Loading required package: IRanges
+Loading required package: GenomeInfoDb
+Loading required package: GenomicRanges
+Loading required package: Biostrings
+Loading required package: XVector
+
+Attaching package: 'Biostrings'
+The following object is masked from 'package:base':
+
+    strsplit
+Loading required package: rtracklayer
+
+# Assign data to the yeastGenome object
+yeastGenome <- BSgenome.Scerevisiae.UCSC.sacCer3
+
+# Ex5 b)
+# Load the yeast genome
+library(BSgenome.Scerevisiae.UCSC.sacCer3)
+
+# Assign data to the yeastGenome object
+yeastGenome <- BSgenome.Scerevisiae.UCSC.sacCer3
+
+# Get the head of seqnames and tail of seqlengths for yeastGenome
+head(seqnames(yeastGenome))
+
+# Result:
+[1] "chrI"   "chrII"  "chrIII" "chrIV"  "chrV"   "chrVI"
+
+tail(seqlengths(yeastGenome))
+# Result:
+chrXII chrXIII  chrXIV   chrXV  chrXVI    chrM 
+1078177  924431  784333 1091291  948066   85779 
+
+# Ex5 c)
+# Load the yeast genome
+library(BSgenome.Scerevisiae.UCSC.sacCer3)
+
+# Assign data to the yeastGenome object
+yeastGenome <- BSgenome.Scerevisiae.UCSC.sacCer3
+
+# Get the head of seqnames and tail of seqlengths for yeastGenome
+head(seqnames(yeastGenome))
+tail(seqlengths(yeastGenome))
+
+# Print chromosome M, alias chrM
+print (yeastGenome$chrM)
+
+# Result:
+85779-letter "DNAString" instance
+seq: TTCATAATTAATTTTTTATATATATATTATATTATA...TACAGAAATATGCTTAATTATAATATAATATCCATA
+
+# Count characters of the chrM sequence
+nchar(yeastGenome$chrM)
+
+# Result:
+85779
